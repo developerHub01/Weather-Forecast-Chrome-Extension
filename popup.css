@@ -73,7 +73,6 @@ p {
     transform: rotate(360deg);
   }
 }
-
 .innerLoader p {
   position: relative;
   z-index: 2;
@@ -108,6 +107,10 @@ p {
   display: flex;
   flex-direction: column;
   gap: 5px;
+}
+.showLocation{
+  font-size: 20px;
+  text-align: center;
 }
 .tempAndDetails {
   width: 100%;

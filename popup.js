@@ -1,5 +1,6 @@
 const wrapper = document.querySelector(".wrapper");
 const innerWrapper = document.querySelector(".innerWrapper");
+const showLocation = document.querySelector(".showLocation");
 const tempAndDetails = document.querySelector(".tempAndDetails");
 const airDetails = document.querySelector(".airDetails");
 const forecastDisplay = document.querySelector(".forecastDisplay");
@@ -49,6 +50,7 @@ const generateWeather = async (currentLocation) => {
     const data = await res.json();
     console.log(data);
     const {
+      location: { name, country },
       current,
       forecast: { forecastday },
       alerts: { alert },
@@ -71,6 +73,8 @@ const generateWeather = async (currentLocation) => {
     wrapper.style.backgroundPosition = "center";
     wrapper.style.backgroundSize = "cover";
     wrapper.style.backgroundRepeat = "no-repeat";
+
+    showLocation.innerText = `${name}, ${country}`;
 
     let temp = condition.icon.split("/");
     const weaterIcon = chrome.runtime.getURL(
