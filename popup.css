@@ -1,0 +1,318 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box !important;
+  outline: none;
+}
+body {
+  width: 450px;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  user-select: none;
+  font-family: "Poppins", sans-serif;
+}
+button,
+input,
+textarea {
+  font-family: "Poppins", sans-serif;
+}
+p {
+  font-size: 13px;
+}
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: 555;
+  display: none;
+}
+.loader.active {
+  display: grid;
+  place-items: center;
+}
+.loader .innerLoader {
+  position: absolute;
+  font-size: 20px;
+  padding: 15px;
+  font-weight: 800;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  color: #212121;
+}
+.loader .innerLoader::before {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  background: #fff;
+  z-index: 1;
+}
+.loader .innerLoader::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 80%;
+  background: #212121;
+  z-index: 0;
+  animation: loadingAnim 1s linear infinite;
+}
+@keyframes loadingAnim {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.innerLoader p {
+  position: relative;
+  z-index: 2;
+}
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  padding: 5px 10px;
+  color: #fff;
+  position: relative;
+}
+.wrapper::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(33, 33, 33, 0.5);
+  mix-blend-mode: multiply;
+  z-index: 0;
+}
+.innerWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.tempAndDetails {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  justify-content: space-between;
+  align-items: center;
+}
+.details,
+.temp {
+  width: 100%;
+}
+.details {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.is_day {
+  font-size: 18px;
+}
+.weaterIcon {
+  flex-shrink: 0;
+  background: #ffffff;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}
+.details div,
+.temp {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.weaterIcon img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.airDetails {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+}
+.airDetails > div {
+  width: 100%;
+  text-align: center;
+}
+.airDetails h3 {
+  border-bottom: 2px solid;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+.forecastDisplay {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  grid-template-rows: 1fr;
+}
+.eachDay {
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  color: #212121;
+  padding: 5px;
+  border-radius: 5px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+.eachDay img {
+  width: 50px;
+  height: 50px;
+}
+.eachDay .weatherType {
+  font-size: 15px;
+  font-weight: 600;
+}
+.eachDay:first-of-type {
+  grid-column: span 2;
+}
+.forecastTop {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.forecastTemp {
+  font-size: 15px;
+}
+.eachDay h4 {
+  font-size: 18px;
+}
+.eachDay > p {
+  font-size: 16px;
+}
+.alert {
+  position: absolute;
+  width: 80%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  background: #fff;
+  z-index: 55;
+  padding: 20;
+  user-select: text;
+  clip-path: circle(12% at 94% 0);
+  transition: 0.3s ease;
+}
+.alert:hover {
+  clip-path: circle(180% at 94% 0);
+}
+.alert h2 {
+  font-size: 20px;
+  padding: 30px 0;
+  text-align: center;
+  user-select: none;
+}
+.alert ul {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+.alert li {
+  padding: 10px;
+  background: #212121;
+  color: #ffffff;
+}
+.alert li h3 {
+  font-size: 20px;
+  line-height: 1.5;
+  padding-bottom: 8px;
+}
+.alert li h4 {
+  font-size: 16px;
+}
+.alert .alertTime {
+  padding-bottom: 10px;
+}
+.alert .alertTime span {
+  background: #fff;
+  color: #212121;
+  padding: 2px 5px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+.alert p {
+  font-size: 16px;
+}
+.alert img {
+  position: absolute;
+  top: 15px;
+  right: 2px;
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+  user-select: none;
+}
+.alert .numberOfAlert {
+  user-select: none;
+  position: absolute;
+  top: 5px;
+  right: 40px;
+  background: red;
+  padding: 2px;
+  color: #fff;
+  font-size: 16px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  z-index: 8;
+  box-shadow: 0 0 10px 3px rgba(255, 0, 0, 0.733),
+    0 0 20px 3px rgba(255, 0, 0, 0.2);
+}
+.textCenter {
+  text-align: center;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+form input {
+  width: 100%;
+  padding: 2px 5px;
+  font-size: 16px;
+  color: #212121;
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  color: #ffffff;
+}
+form button {
+  font-size: 16px;
+  border-radius: 0;
+  padding: 2px 5px;
+  border: none;
+  color: #212121;
+  background: #fff;
+  cursor: pointer;
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="innerWrapper">
+        <div class="tempAndDetails"></div>
+        <div class="airDetails"></div>
+        <div class="forecastDisplay"></div>
+        <form>
+          <input type="text" id="searchInp" placeholder="Enter City name..." />
+          <button type="submit" id="searchBtn">Search</button>
+        </form>
+      </div>
+    </div>
+    <div class="alert">
+      <h2>Alerts</h2>
+      <img src="./images/alertIcon.png" alt="" />
+      <ul class="alertList"></ul>
+    </div>
+    <div class="loader active">
+      <div class="innerLoader">
+        <p>Loading....</p>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
