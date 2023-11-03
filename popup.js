@@ -9,6 +9,7 @@ const alertWrapper = document.querySelector(".alert");
 const alertList = document.querySelector(".alertList");
 const searchInp = document.querySelector("#searchInp");
 const searchBtn = document.querySelector("#searchBtn");
+const resetBtn = document.querySelector(".resetBtn");
 
 const weatherApiKey = "22c23046ca024d3292a124714230111";
 
@@ -17,6 +18,8 @@ const daysName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 const nightBg = chrome.runtime.getURL("images/nightBg.jpg");
 const dayBg = chrome.runtime.getURL("images/dayBg.jpg");
 const alertIcon = chrome.runtime.getURL("images/alertIcon.png");
+const pointerIcon = chrome.runtime.getURL("images/pointer.png");
+const resetIcon = chrome.runtime.getURL("images/reset.png");
 
 const getCurrentLocation = async () => {
   return new Promise((res, rej) => {
@@ -123,21 +126,16 @@ const generateWeather = async (currentLocation) => {
         avgtemp_c,
         condition: { text, icon },
       } = day;
-      const manageTempDisplay = () => {
-        if (!i) {
-          return `
-            <div class="forcastTemp">
-              <p>Temperature</p>
-              <p>Max ${maxtemp_c} &degC |  Min: ${mintemp_c} &degC | Avg: ${avgtemp_c} &degC</p>
-            </div>
+
+      const forecastDetailsDisplay = () => {
+        return `
+          <div class="forecastDet">
+          <h5>Temperature</h5>
+            <p>Avg: ${avgtemp_c} &degC </p>
+            <p>Min: ${mintemp_c} &degC </p>
+            <p>Max: ${maxtemp_c} &degC </p>
+          </div>
           `;
-        } else {
-          return `
-            <div class="forcastTemp">
-              <p>${avgtemp_c} &degC </p>
-            </div>
-          `;
-        }
       };
 
       temp = icon.split("/");
@@ -147,10 +145,14 @@ const generateWeather = async (currentLocation) => {
 
       forecastDisplay.innerHTML += `
         <div class="eachDay">
-            <img src=${forecastWeaterIcon} alt=${text}/>
-            <h4>${daysName[(currentDay + i) % daysName.length]}</h4>
-            <p class="weatherType">${text}</p>
-          ${manageTempDisplay()}
+          <img src=${forecastWeaterIcon} alt=${text}/>
+          <h4>${daysName[(currentDay + i) % daysName.length]}</h4>
+          <p class="weatherType">${text}</p>
+          ${forecastDetailsDisplay()}
+
+          <div class="pointerIcon">
+            <img src=${pointerIcon} src="pointerIcon">
+          </div>
         </div>
       `;
 
@@ -198,6 +200,10 @@ const work = () => {
     loader.classList.add("active");
     generateWeather(searchInp.value);
     searchInp.value = "";
+  });
+  resetBtn.addEventListener("click", (e) => {
+    console.log('Hello');
+    generateWeather();
   });
 };
 
