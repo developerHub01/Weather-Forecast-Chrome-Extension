@@ -130,24 +130,25 @@ const generateWeather = async (currentLocation) => {
       const forecastDetailsDisplay = () => {
         return `
           <div class="forecastDet">
-          <h5>Temperature</h5>
+            <h5>Temperature</h5>
             <p>Avg: ${avgtemp_c} &degC </p>
             <p>Min: ${mintemp_c} &degC </p>
             <p>Max: ${maxtemp_c} &degC </p>
-          </div>
-          `;
-      };
+            </div>
+            `;
+          };
 
-      temp = icon.split("/");
-      const forecastWeaterIcon = chrome.runtime.getURL(
-        `images/day/${temp[temp.length - 1]}`
-      );
+          temp = icon.split("/");
+          const forecastWeaterIcon = chrome.runtime.getURL(
+            `images/day/${temp[temp.length - 1]}`
+            );
 
       forecastDisplay.innerHTML += `
-        <div class="eachDay">
-          <img src=${forecastWeaterIcon} alt=${text}/>
-          <h4>${daysName[(currentDay + i) % daysName.length]}</h4>
-          <p class="weatherType">${text}</p>
+      <div class="eachDay">
+        <img src=${forecastWeaterIcon} alt=${text}/>
+        <h4>${daysName[(currentDay + i) % daysName.length]}</h4>
+        <p class="weatherType">${text}</p>
+        <p class="eachDayTemp">${avgtemp_c} &degC </p>
           ${forecastDetailsDisplay()}
 
           <div class="pointerIcon">
