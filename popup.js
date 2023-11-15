@@ -124,9 +124,10 @@ const generateWeather = async (currentLocation) => {
         maxtemp_c,
         mintemp_c,
         avgtemp_c,
+        daily_chance_of_snow,
+        daily_chance_of_rain,
         condition: { text, icon },
       } = day;
-
       const forecastDetailsDisplay = () => {
         return `
           <div class="forecastDet">
@@ -136,20 +137,26 @@ const generateWeather = async (currentLocation) => {
             <p>Max: ${maxtemp_c} &degC </p>
             </div>
             `;
-          };
+      };
 
-          temp = icon.split("/");
-          const forecastWeaterIcon = chrome.runtime.getURL(
-            `images/day/${temp[temp.length - 1]}`
-            );
+      temp = icon.split("/");
+      const forecastWeaterIcon = chrome.runtime.getURL(
+        `images/day/${temp[temp.length - 1]}`
+      );
 
       forecastDisplay.innerHTML += `
-      <div class="eachDay">
-        <img src=${forecastWeaterIcon} alt=${text}/>
-        <h4>${daysName[(currentDay + i) % daysName.length]}</h4>
-        <p class="weatherType">${text}</p>
-        <p class="eachDayTemp">${avgtemp_c} &degC </p>
+      <div class="eachDay ${i || "currentDay"}">
+        <div>
+          <img src=${forecastWeaterIcon} alt=${text}/>
+          <h4>${daysName[(currentDay + i) % daysName.length]}</h4>
+        </div>
+        <div class="eachDayDetails">
+          <p class="weatherType">${text}</p>
+          <p class="eachDayTemp">${avgtemp_c} &degC </p>
+          <p>Daily chance to rain: ${daily_chance_of_rain}%</p>
+          <p>Daily chance to snow: ${daily_chance_of_snow}%</p>
           ${forecastDetailsDisplay()}
+        </div>
 
           <div class="pointerIcon">
             <img src=${pointerIcon} src="pointerIcon">
@@ -203,7 +210,7 @@ const work = () => {
     searchInp.value = "";
   });
   resetBtn.addEventListener("click", (e) => {
-    console.log('Hello');
+    console.log("Hello");
     generateWeather();
   });
 };

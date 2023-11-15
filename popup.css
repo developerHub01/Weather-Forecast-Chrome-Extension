@@ -7,7 +7,7 @@
 }
 body {
   width: 500px;
-  height: 600px;
+  height: 650px;
   overflow: hidden;
   display: grid;
   place-items: center;
@@ -16,6 +16,7 @@ body {
   position: relative;
   user-select: none;
   font-family: "Poppins", sans-serif;
+  background: #212121;
 }
 button,
 input,
@@ -188,7 +189,7 @@ p {
 .forecastDisplay {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 5px;
   grid-template-rows: 1fr;
 }
@@ -208,6 +209,11 @@ p {
   position: relative;
   overflow: hidden;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
 }
 .eachDay img {
   width: 50px;
@@ -258,6 +264,11 @@ p {
   height: 2px;
   background: #fff;
 }
+.currentDay{
+  flex-direction: row;
+  gap: 15px;
+  justify-content: space-evenly;
+}
 .pointerIcon {
   position: absolute;
   bottom: 2px;
@@ -283,6 +294,11 @@ p {
 }
 .eachDay .eachDayTemp {
   font-size: 13px;
+}
+.eachDay .eachDayDetails{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 form {
@@ -399,4 +415,19 @@ form button {
 }
 .textCenter {
   text-align: center;
+}
+
+body::-webkit-scrollbar {
+  width: 8px;
+}
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 4px;
+  height: 20px;
+}
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+body::-webkit-scrollbar-corner {
+  background-color: transparent;
 }
