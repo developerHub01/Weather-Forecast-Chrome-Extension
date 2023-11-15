@@ -292,8 +292,8 @@ p {
 .eachDay p {
   font-size: 16px;
 }
-.eachDay .eachDayTemp {
-  font-size: 13px;
+.eachDay .eachDayDetailsText {
+  font-size: 14px;
 }
 .eachDay .eachDayDetails{
   display: flex;

@@ -152,9 +152,9 @@ const generateWeather = async (currentLocation) => {
         </div>
         <div class="eachDayDetails">
           <p class="weatherType">${text}</p>
-          <p class="eachDayTemp">${avgtemp_c} &degC </p>
-          <p>Daily chance to rain: ${daily_chance_of_rain}%</p>
-          <p>Daily chance to snow: ${daily_chance_of_snow}%</p>
+          <p class="eachDayDetailsText">${avgtemp_c} &degC </p>
+          <p class="eachDayDetailsText">Daily chance to rain: ${daily_chance_of_rain}%</p>
+          <p class="eachDayDetailsText">Daily chance to snow: ${daily_chance_of_snow}%</p>
           ${forecastDetailsDisplay()}
         </div>
 
